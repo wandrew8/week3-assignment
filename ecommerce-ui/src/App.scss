@@ -34,12 +34,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0rem 1rem;
+    padding: 0rem 1rem 2rem 0rem;
     h1 {
       font-size: 2rem;
       font-weight: 300;
       text-transform: uppercase;
-      margin-bottom: 2rem;
     } 
     button {
       background: transparent;
@@ -106,7 +105,8 @@ header {
 
 // ------------ SHOPPING CART STYLING ---------------
 .shoppingCart {
-    border: solid 2px black;
+    border: solid 2px lightgray;
+    border-radius: 1rem;
     position: fixed;
     background: white;
     width: 90%;
@@ -121,6 +121,10 @@ header {
     left: 0;
     right: 0;
     overflow: auto;
+    visibility: hidden;
+    transform: translateY(-50px);
+    transition: all 500ms ease-in-out;
+    opacity: 0;
     h2 {
       font-size: 2.5rem;
       font-weight: 300;
@@ -142,6 +146,11 @@ header {
       padding: 1rem 2rem;
       font-weight: 700;
     }
+  }
+.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
 }
 .cartItem {
   display: flex;
@@ -166,17 +175,69 @@ header {
 
 // ------------ FORM STYLING ---------------
 .form {
-  position: absolute;
+  border: solid 2px lightgray;
+  border-radius: 1rem;
+  position: fixed;
   background: white;
   width: 90%;
-  max-width: 500px;
-  height: 50vh;
+  max-width: 700px;
+  z-index: 50;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
+  top: 40px;
   left: 0;
   right: 0;
-  border: solid black 2px;
-  z-index: 50;
+  visibility: hidden;
+  transform: translateY(-50px);
+  transition: all 500ms ease-in-out;
+  opacity: 0;
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 1rem 0rem;
+    border-bottom: solid 1px lightgray;
+  }
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    text-align: left;
+  }
+  .formGroup {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: space-between;
+  }
+  label, input, select {
+    display: block;
+    margin: 0.5rem;
+    width: 100%;
+    height: 1.5rem;
+  }
+  .checkbox {
+    display: flex;
+    align-items: center;
+  }
+  .button {
+    margin: 2rem;
+  }
+}
+.showForm {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
 }
 
 // ------------ RATING COMPONENT STYLING ---------------

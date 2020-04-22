@@ -23,7 +23,7 @@ class ShoppingCart extends React.Component {
         const { items } = this.props;
         const total = items.length > 0 ? items.map(item => item.payment.cost).reduce((accum, curr) => accum + curr) : '';
         return(
-            <div className="shoppingCart">
+            <div className={this.props.class}>
                 <h2>Shopping Cart</h2>
                 <button className="close" onClick={this.props.toggleCart}><FontAwesomeIcon icon={faWindowClose} /></button>
                 {items.length > 0 ? items.map(item => <CartItem removeItem={this.props.removeItem} item={item} key={item.title}/>) : "You have no items in your cart"}
