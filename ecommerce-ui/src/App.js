@@ -6,18 +6,29 @@ import HotelContainer from './components/HotelContainer';
 import data from './airbnbs.json'
 import './App.scss';
 
-function App() {
-  return (
-    <div>
-      <NavBar />
-      <div className="mainContainer">
-        <ShoppingCart />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        showCart: true,
+        showForm: false,
+    }
+}
+    toggleCart = () => {
+      this.setState({ showCart: !this.state.showCart })
+    }
+    render() {
+
+      return (
+        <div>
+        <NavBar toggleCart={this.toggleCart} />
+        {this.state.showCart ? <ShoppingCart toggleCart={this.toggleCart}/> : null }
         <HotelContainer>
           {data.map(item => <Card data={item} />)}
         </HotelContainer>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
