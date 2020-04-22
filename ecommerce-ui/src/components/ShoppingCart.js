@@ -20,7 +20,7 @@ class ShoppingCart extends React.Component {
         return(
             <aside>
                 <h2>Shopping Cart</h2>
-                <button onClick={this.props.toggleCart} >Hide Cart</button>
+                <button onClick={this.props.toggleCart}>Hide Cart</button>
             </aside>
         )
     }

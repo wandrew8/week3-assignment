@@ -19,6 +19,7 @@ class NavBar extends React.Component {
                 <nav>
                     <h1>Hotels</h1>
                     <div className="iconLinks">
+                    <button onClick={this.props.toggleForm}>Add Hotel</button>
                     <button onClick={this.props.toggleCart}>Shopping Cart</button>
                         <FontAwesomeIcon 
                             onClick={this.props.toggleCart}
