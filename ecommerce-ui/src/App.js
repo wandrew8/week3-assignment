@@ -28,6 +28,10 @@ class App extends React.Component {
       this.setState({ showCart: true, cart: [...this.state.cart, item]});
     }
 
+    removeItem = (item) => {
+      this.setState({ cart: this.state.cart.filter(hotel => hotel.title !== item.title)})
+    }
+
     render() {
 
       return (
@@ -35,7 +39,7 @@ class App extends React.Component {
           <NavBar toggleForm={this.toggleForm} toggleCart={this.toggleCart} />
           <div className="mainContent">
             {this.state.showForm && <Form toggleForm={this.toggleForm} />}
-            {this.state.showCart && <ShoppingCart items={this.state.cart} toggleCart={this.toggleCart}/>}
+            {this.state.showCart && <ShoppingCart items={this.state.cart} removeItem={this.removeItem} toggleCart={this.toggleCart}/>}
             <HotelContainer>
               {data.map(item => <Card key={item.title} addToCart={this.addToCart} data={item} />)}
             </HotelContainer>

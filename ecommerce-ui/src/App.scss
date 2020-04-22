@@ -135,6 +135,7 @@ header {
       background: white;
       border: none;
       font-size: 1.5rem;
+      cursor: pointer;
     }
     .total {
       text-align: right;
@@ -144,15 +145,22 @@ header {
 }
 .cartItem {
   display: flex;
+  position: relative;
   flex-basis: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem 1rem 2rem;
   border-bottom: lightgray solid 1px;
   img {
     height: 50px;
     width: 50px;
     object-fit: cover;
+  }
+  .trash {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
   }
 }
 

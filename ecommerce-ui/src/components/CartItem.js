@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import '../App.scss';
 
@@ -29,6 +29,7 @@ class CardItem extends React.Component {
                     <p>{title}</p>
                 </div>
                 <p><em>${payment.cost}</em></p>
+                <FontAwesomeIcon onClick={this.props.removeItem.bind(this, this.props.item)} className="trash" icon={faTrashAlt} />
             </div>
         )
     }
