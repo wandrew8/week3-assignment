@@ -9,6 +9,8 @@ html {
 
 h1, h2, h3, p {
   font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 *, *:before, *:after {
@@ -18,9 +20,11 @@ h1, h2, h3, p {
 }
 
 .mainContainer {
+  margin: 2rem;
+}
+
+.mainContent {
   margin: 2rem 0rem;
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr) 4fr;
 }
 
 // ------------ HEADER / NAVBAR ---------------
@@ -35,24 +39,54 @@ header {
       font-size: 2rem;
       font-weight: 300;
       text-transform: uppercase;
-
+      margin-bottom: 2rem;
     } 
+    button {
+      background: transparent;
+      border: none;
+    }
   }
 }
 
 // ------------ CARD STYLING ---------------
 .card {
-  border: solid 2px black;
+  position: relative;
+  .imageContent {
+    position: relative;
+  }
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0rem 1rem 0rem 1rem;
+  }
+  .description {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding: 0.25rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  .cardContent {
+    h3 {
+      margin: 0.3rem 0rem;
+    }
+    em {
+      font-weight: 700;
+    }
+  }
 }
 
 
 // ------------ MAIN CONTAINER STYLING ---------------
 .hotelContainer {
-  margin-left: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-content: center;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
 }
 
 
@@ -60,19 +94,32 @@ header {
 aside {
     border: solid 2px black;
     position: absolute;
+    background: white;
     width: 300px;
-    height: 80vh;
-    transition: 500ms ease-in;
+    height: 60%;
+    max-height:700px;
 }
 
 // ------------ FORM STYLING ---------------
 .form {
   position: absolute;
   background: white;
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   height: 50vh;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
+  border: solid black 2px;
+}
+
+// ------------ RATING COMPONENT STYLING ---------------
+.rating {
+  position: absolute;
+  color: goldenrod;
+  background: linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5), rgba(0,0,0,0), rgba(0,0,0,0));
+  padding: 0.5rem;
+  width: 100%;
+  top: 0;
 }

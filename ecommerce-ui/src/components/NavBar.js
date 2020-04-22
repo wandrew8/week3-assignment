@@ -19,14 +19,16 @@ class NavBar extends React.Component {
                 <nav>
                     <h1>Hotels</h1>
                     <div className="iconLinks">
-                    <button onClick={this.props.toggleForm}>Add Hotel</button>
-                    <button onClick={this.props.toggleCart}>Shopping Cart</button>
+                    <button style={{margin: "0rem 1rem"}} onClick={this.props.toggleForm}>
                         <FontAwesomeIcon 
-                            onClick={this.props.toggleCart}
-                            size="2x" 
-                            style={{margin: "0rem 1rem"}} 
+                            size="2x"  
                             icon={faPlusCircle} />
-                        <FontAwesomeIcon size="2x" icon={faShoppingCart} />
+                    </button>
+                    <button onClick={this.props.toggleCart}>
+                        <FontAwesomeIcon 
+                            size="2x" 
+                            icon={faShoppingCart} />
+                    </button>
                     </div>
                 </nav>
             </header>

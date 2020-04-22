@@ -26,14 +26,16 @@ class App extends React.Component {
     render() {
 
       return (
-        <div>
-        <NavBar toggleForm={this.toggleForm} toggleCart={this.toggleCart} />
-        {this.state.showForm && <Form toggleForm={this.toggleForm} />}
-        {this.state.showCart && <ShoppingCart toggleCart={this.toggleCart}/>}
-        <HotelContainer>
-          {data.map(item => <Card data={item} />)}
-        </HotelContainer>
-      </div>
+        <div className="mainContainer">
+          <NavBar toggleForm={this.toggleForm} toggleCart={this.toggleCart} />
+          <div className="mainContent">
+            {this.state.showForm && <Form toggleForm={this.toggleForm} />}
+            {this.state.showCart && <ShoppingCart toggleCart={this.toggleCart}/>}
+            <HotelContainer>
+              {data.map(item => <Card key={item.title} data={item} />)}
+            </HotelContainer>
+          </div>
+        </div>
     );
   }
 }
