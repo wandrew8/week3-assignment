@@ -15,14 +15,15 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            houseType: '',
+            houseType: 'House',
             city: '',
-            country: '',
+            country: 'USA',
             title: '',
             cancellation: false,
             image: '',
             cost: 0,
         }
+        this.handleInputChange = this.handleInputChange.bind(this)
     }
 
     handleInputChange(e) {
@@ -31,15 +32,47 @@ class Form extends React.Component {
         this.setState(change)
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const item = {
+            title: this.state.title,
+            houseType: this.state.houseType,
+            image: this.state.image,
+            location: {
+                city: this.state.city,
+                country: this.state.country,
+            },
+            payment: {
+                cost: this.state.cost,
+                description: this.state.cancellation ? 'Free cacellation' : '',
+            },
+            rating: {
+                stars: 3,
+                reviews: 0,
+            }
+        }
+        console.log(item)
+        this.props.postHotel(item);
+        this.setState({
+            houseType: 'House',
+            city: '',
+            country: 'USA',
+            title: '',
+            cancellation: false,
+            image: '',
+            cost: 0,
+        })
+    }
+
 
     render() {
         return(
             <div className={this.props.class ? "form showForm" : "form"}>
                 <h2>Add a Listing</h2>
                 <button className="close" onClick={this.props.toggleForm}><FontAwesomeIcon icon={faWindowClose} /></button>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="houseType">Type of accomodation</label>
-                    <select required name="houseType" id="houseType">
+                    <select onChange={this.handleInputChange} required name="houseType" id="houseType">
                         <option value="Entire House">House</option>
                         <option value="Apartment">Apartment</option>
                         <option value="Private Room">Private Room</option>
@@ -49,11 +82,11 @@ class Form extends React.Component {
                     <div className="formGroup">
                         <div>
                             <label htmlFor="city">City</label>
-                            <input required id="city" name="city" type="text" />
+                            <input onChange={this.handleInputChange} required id="city" name="city" type="text" />
                         </div>
                         <div>
                             <label htmlFor="country">Country</label>
-                            <select required name="country" id="country">
+                            <select onChange={this.handleInputChange} required name="country" id="country">
                                 <option value="USA">United States of America</option>
                                 <option value="Canada">Canada</option>
                                 <option value="Mexico">Mexico</option>
@@ -62,20 +95,20 @@ class Form extends React.Component {
                     </div>
                     
                     <label htmlFor="title">Describe the property (max 50 characters)</label>
-                    <input required id="title" maxLength="50" name="title" type="text" />
+                    <input onChange={this.handleInputChange} required id="title" maxLength="50" name="title" type="text" />
 
                     <label htmlFor="image">Image URL</label>
-                    <input required type="url" name="image" />
+                    <input onChange={this.handleInputChange} required type="url" name="image" />
 
                     <div className="formGroup">
                         <div>
                             <label htmlFor="cost">Cost per night</label>
-                            <input required type="number" name="cost" min="10" step="5" max="1000" />
+                            <input onChange={this.handleInputChange} required type="number" name="cost" min="10" step="5" max="1000" />
                         </div>
 
                         <div className="checkbox">
                             <label htmlFor="cancellation">Allow Free Cancellation?</label>
-                            <input required type="checkbox" name="cancellation" />
+                            <input onChange={this.handleInputChange} type="checkbox" name="cancellation" />
                         </div>
                     </div>
                     

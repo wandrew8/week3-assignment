@@ -14,6 +14,7 @@ class App extends React.Component {
           showCart: false,
           showForm: false,
           cart: [],
+          hotels: [...data]
       }
     }
     toggleCart = () => {
@@ -27,11 +28,16 @@ class App extends React.Component {
     addToCart = (item) => {
       if (!this.state.cart.includes(item)) {
         return this.setState({ showCart: true, cart: [...this.state.cart, item]});
-      }
+      } 
+      return this.setState({ showCart: true });
     }
 
     removeItem = (item) => {
       this.setState({ cart: this.state.cart.filter(hotel => hotel.title !== item.title)})
+    }
+
+    postHotel = (item) => {
+      this.setState({ hotels: [...this.state.hotels, item], showForm: false })
     }
 
     render() {
@@ -40,10 +46,10 @@ class App extends React.Component {
         <div className="mainContainer">
           <NavBar toggleForm={this.toggleForm} toggleCart={this.toggleCart} />
           <div className="mainContent">
-            <Form class={this.state.showForm} toggleForm={this.toggleForm} />
+            <Form class={this.state.showForm} postHotel={this.postHotel} toggleForm={this.toggleForm} />
             <ShoppingCart class={this.state.showCart ? "shoppingCart show" : "shoppingCart" } items={this.state.cart} removeItem={this.removeItem} toggleCart={this.toggleCart}/>
             <HotelContainer>
-              {data.map(item => <Card key={item.title} addToCart={this.addToCart} data={item} />)}
+              {this.state.hotels.map(item => <Card key={item.title} addToCart={this.addToCart} data={item} />)}
             </HotelContainer>
           </div>
         </div>

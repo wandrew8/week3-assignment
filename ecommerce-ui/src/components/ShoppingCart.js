@@ -19,9 +19,10 @@ class ShoppingCart extends React.Component {
             
         }
     }
+
     render() {
         const { items } = this.props;
-        const total = items.length > 0 ? items.map(item => item.payment.cost).reduce((accum, curr) => accum + curr) : '';
+        const total = items.length > 0 ? items.map(item => parseInt(item.payment.cost)).reduce((accum, curr) => accum + curr) : '';
         return(
             <div className={this.props.class}>
                 <h2>Shopping Cart</h2>
