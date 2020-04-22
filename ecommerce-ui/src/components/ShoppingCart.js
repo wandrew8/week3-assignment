@@ -1,4 +1,7 @@
 import React from 'react';
+import CartItem from './CartItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import '../App.scss';
 
@@ -17,11 +20,15 @@ class ShoppingCart extends React.Component {
         }
     }
     render() {
+        const { items } = this.props;
+        const total = items.map(item => item.payment.cost).reduce((accum, curr) => accum + curr)
         return(
-            <aside>
+            <div className="shoppingCart">
                 <h2>Shopping Cart</h2>
-                <button onClick={this.props.toggleCart}>Hide Cart</button>
-            </aside>
+                <button className="close" onClick={this.props.toggleCart}><FontAwesomeIcon icon={faWindowClose} /></button>
+                {items.length > 0 ? items.map(item => <CartItem item={item} key={item.title}/>) : "You have no items in your cart"}
+                {items.length > 0 ? <p className="total">Total: ${total}</p> : null}
+            </div>
         )
     }
 }

@@ -28,9 +28,9 @@ class Rating extends React.Component {
         
         return(
             <div className="rating">
-                {propsArray.map(star => {
+                {propsArray.map((star, i) => {
                     if (star === "full") {
-                        return <FontAwesomeIcon icon={faStar} />
+                        return <FontAwesomeIcon key={i} icon={faStar} />
                     }
                 })}
                 {` ${stars} (${reviews})`}

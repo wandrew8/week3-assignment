@@ -31,6 +31,7 @@ class Card extends React.Component {
                   <p>{`${location.city}, ${location.country}`}</p>
                   <p>{title}</p>
                   <p><em>${payment.cost}</em> / night</p>
+                  <button onClick={this.props.addToCart.bind(this, this.props.data)}>Book Now</button>
                 </div>
             </div>
         )

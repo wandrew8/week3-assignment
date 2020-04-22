@@ -8,19 +8,24 @@ import data from './airbnbs.json'
 import './App.scss';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        showCart: false,
-        showForm: false,
+    constructor(props) {
+      super(props);
+      this.state = {
+          showCart: false,
+          showForm: false,
+          cart: [],
+      }
     }
-}
     toggleCart = () => {
       this.setState({ showCart: !this.state.showCart })
     }
 
     toggleForm = () => {
       this.setState({ showForm: !this.state.showForm })
+    }
+
+    addToCart = (item) => {
+      this.setState({ showCart: true, cart: [...this.state.cart, item]});
     }
 
     render() {
@@ -30,9 +35,9 @@ class App extends React.Component {
           <NavBar toggleForm={this.toggleForm} toggleCart={this.toggleCart} />
           <div className="mainContent">
             {this.state.showForm && <Form toggleForm={this.toggleForm} />}
-            {this.state.showCart && <ShoppingCart toggleCart={this.toggleCart}/>}
+            {this.state.showCart && <ShoppingCart items={this.state.cart} toggleCart={this.toggleCart}/>}
             <HotelContainer>
-              {data.map(item => <Card key={item.title} data={item} />)}
+              {data.map(item => <Card key={item.title} addToCart={this.addToCart} data={item} />)}
             </HotelContainer>
           </div>
         </div>
