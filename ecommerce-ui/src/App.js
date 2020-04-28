@@ -2,7 +2,6 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import Card from './components/Card';
 import ShoppingCart from './components/ShoppingCart';
-import HotelContainer from './components/HotelContainer';
 import Form from './components/Form';
 import data from './airbnbs.json'
 import './App.scss';
@@ -48,9 +47,9 @@ class App extends React.Component {
           <div className="mainContent">
             <Form class={this.state.showForm} postHotel={this.postHotel} toggleForm={this.toggleForm} />
             <ShoppingCart class={this.state.showCart ? "shoppingCart show" : "shoppingCart" } items={this.state.cart} removeItem={this.removeItem} toggleCart={this.toggleCart}/>
-            <HotelContainer>
+            <section className="hotelContainer">
               {this.state.hotels.map(item => <Card key={item.title} addToCart={this.addToCart} data={item} />)}
-            </HotelContainer>
+            </section>
           </div>
         </div>
     );

@@ -6,10 +6,18 @@ import '../App.scss';
 
 class CardItem extends React.Component {
     static propTypes = {
-        countFrom: PropTypes.number
-    }
-    static defaultProps = {
-        countFrom: 10
+        countFrom: PropTypes.shape({
+            image: PropTypes.string,
+            title: PropTypes.string,
+            location: PropTypes.shape({
+                city: PropTypes.string,
+                country: PropTypes.string
+            }),
+            payment: PropTypes.shape({
+                cost: PropTypes.number,
+                description: PropTypes.string
+            })
+        })
     }
 
     constructor(props) {
@@ -19,7 +27,7 @@ class CardItem extends React.Component {
         }
     }
     render() {
-        const { image, houseType, title, location, payment, host, rating } = this.props.item;
+        const { image, title, location, payment } = this.props.item;
  
         return(
             <div className="cartItem">

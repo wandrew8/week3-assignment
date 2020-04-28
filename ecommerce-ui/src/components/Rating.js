@@ -1,15 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, farFasStar } from '@fortawesome/free-solid-svg-icons'; 
+import { faStar } from '@fortawesome/free-solid-svg-icons'; 
 import PropTypes from 'prop-types';
 import '../App.scss';
 
 class Rating extends React.Component {
     static propTypes = {
-        countFrom: PropTypes.number
-    }
-    static defaultProps = {
-        countFrom: 10
+        rating: PropTypes.shape({
+            stars: PropTypes.number,
+            reviews: PropTypes.number
+        })
     }
 
     constructor(props) {
@@ -32,6 +32,7 @@ class Rating extends React.Component {
                     if (star === "full") {
                         return <FontAwesomeIcon key={i} icon={faStar} />
                     }
+                    return;
                 })}
                 {` ${stars} (${reviews})`}
             </div>

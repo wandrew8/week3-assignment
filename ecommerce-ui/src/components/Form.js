@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 import '../App.scss';
 
 class Form extends React.Component {
-    // static propTypes = {
-    //     countFrom: PropTypes.number
-    // }
-    // static defaultProps = {
-    //     countFrom: 10
-    // }
-
+    static propTypes = {
+        class: PropTypes.bool,
+        postHotel: PropTypes.func,
+        toggleForm: PropTypes.func
+    }
+   
     constructor(props) {
         super(props);
         this.state = {

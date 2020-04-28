@@ -7,10 +7,10 @@ import '../App.scss';
 
 class ShoppingCart extends React.Component {
     static propTypes = {
-        countFrom: PropTypes.number
-    }
-    static defaultProps = {
-        countFrom: 10
+        class: PropTypes.string,
+        items: PropTypes.array,
+        removeItem: PropTypes.func,
+        toggleCart: PropTypes.func
     }
 
     constructor(props) {

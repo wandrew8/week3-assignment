@@ -6,12 +6,9 @@ import '../App.scss';
 
 class NavBar extends React.Component {
     static propTypes = {
-        countFrom: PropTypes.number
+        toggleForm: PropTypes.func,
+        toggleCart: PropTypes.func
     }
-    static defaultProps = {
-        countFrom: 10
-    }
-
     
     render() {
         return(
